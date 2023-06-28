@@ -1,0 +1,18 @@
+# Disable directory browsing
+Options All -Indexes
+
+Header set X-XSS-Protection "1; mode=block"
+Header append X-Frame-Options: "SAMEORIGIN"
+Header set X-Content-Type-Options nosniff
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^public
+RewriteRule ^(.*)$ public/$1 [L]
+
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW HOTLINKID:e3Av1pPJfK
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?africavoting.com/.*$      [NC]
+RewriteRule .*\.(.*|jpg|jpeg|gif|png|bmp|tiff|avi|mpeg|mpg|wma|mov|zip|rar|exe|mp3|pdf|swf|psd|txt|html|htm|php)$ https://africavoting.com [R,NC]
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE e3Av1pPJfK:HOTLINKID
+
